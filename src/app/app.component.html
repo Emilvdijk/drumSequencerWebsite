@@ -1,0 +1,129 @@
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 columns */
+    grid-template-rows: repeat(4, 50px);   /* 4 rows */
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .grid button {
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+  }
+</style>
+
+
+
+
+<main class="main">
+  <button id="startPlayButton">▶️</button>
+
+  <div class="grid">
+    <button id="b11">1</button> <button id="b12">2</button> <button id="b13">3</button> <button id="b14">4</button>
+    <button id="b15">5</button> <button id="b16">6</button> <button id="b17">7</button> <button id="b18">8</button>
+    <button id="b21">9</button> <button id="b22">10</button> <button id="b23">11</button> <button id="b24">12</button>
+    <button id="b25">13</button> <button id="b26">14</button> <button id="b27">15</button> <button id="b28">16</button>
+    <button id="b31">17</button> <button id="b32">18</button> <button id="b33">19</button> <button id="b34">20</button>
+    <button id="b35">21</button> <button id="b36">22</button> <button id="b37">23</button> <button id="b38">24</button>
+    <button id="b41">25</button> <button id="b42">26</button> <button id="b43">27</button> <button id="b44">28</button>
+    <button id="b45">29</button> <button id="b46">30</button> <button id="b47">31</button> <button id="b48">32</button>
+  </div>
+
+  <script>
+    let bpmInMs  = 1000
+    let play = false
+    let currentStep = 0
+    const beat1 = 'src/assets/kit/808_2.wav'
+    const beat2 = 'src/assets/kit/808_6.wav'
+    const beat3 = 'src/assets/kit/808_O.wav'
+    const beat4 = 'src/assets/kit/soda-bottle-base-drum-46019.mp3'
+    const beatMap = new Map
+    beatMap.set(1,beat1)
+    beatMap.set(2,beat2)
+    beatMap.set(3,beat3)
+    beatMap.set(4,beat4)
+    // const bar1 = [0,0,0,0,0,0,0,0]
+    // const bar2 = [0,0,0,0,0,0,0,0]
+    // const bar3 = [0,0,0,0,0,0,0,0]
+    // const bar4 = [0,0,0,0,0,0,0,0]
+
+    const bar1 = [1,1,1,1,1,1,1,1]
+    const bar2 = [1,1,1,1,1,1,1,1]
+    const bar3 = [1,0,1,0,1,0,1,0]
+    const bar4 = [1,1,1,1,1,1,1,1]
+
+    const bars =new Map()
+    bars.set(bar1,beat1)
+    bars.set(bar2,beat2)
+    bars.set(bar3,beat3)
+    bars.set(bar4,beat4)
+
+    const button = document.getElementById('startPlayButton');
+    button.addEventListener('click', () => {
+      if (play) {
+        play()
+        play = false
+        button.textContent = '▶️';
+      } else {
+        play = intervalTimer(step,bpmInMs)
+        button.textContent = '⏸️';
+      }
+    });
+
+    function updateStyle() {
+
+    }
+
+    function step(){
+      updateStyle()
+      bars.forEach((beat,barArray) => {
+        if(barArray[currentStep]){
+          doBeat(beat)
+        }
+      });
+      (currentStep>6) ? currentStep = 0 : currentStep++
+    }
+
+    function doBeat(beat){
+      const audio = new Audio(beat);
+      console.log("BEAT");
+      audio.play();
+    }
+
+    function intervalTimer(callback, interval = 500) {
+      let counter = 1;
+      let timeoutId;
+      const startTime = Date.now();
+
+      function main() {
+        const nowTime = Date.now();
+        const nextTime = startTime + counter * interval;
+        timeoutId = setTimeout(main, interval - (nowTime - nextTime));
+        console.log('deviation', nowTime - nextTime);
+        console.log(currentStep)
+        counter += 1;
+        callback();
+      }
+      timeoutId = setTimeout(main, interval);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+
+    const barButtons = document.querySelectorAll('.grid button');
+    barButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const buttonId = button.getAttribute('id');
+        console.log(`Button ${buttonId} clicked`);
+        console.log(`Button ${button.dataset.toggled}`);
+        button.dataset.toggled==="true" ? button.dataset.toggled=false : button.dataset.toggled=true
+      });
+    });
+  </script>
+
+
+</main>
+
+<router-outlet />
