@@ -1,42 +1,13 @@
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 columns */
-    grid-template-rows: repeat(4, 50px);   /* 4 rows */
-    gap: 10px;
-    padding: 20px;
-  }
+<main class="main" >
 
-  .grid button {
-    font-size: 16px;
-    padding: 10px;
-    cursor: pointer;
-  }
-</style>
+  <app-play-button></app-play-button>
+  <app-play-field></app-play-field>
 
 
-
-
-<main class="main">
-  <button id="startPlayButton">▶️</button>
-
-  <div class="grid">
-    <button id="b11">1</button> <button id="b12">2</button> <button id="b13">3</button> <button id="b14">4</button>
-    <button id="b15">5</button> <button id="b16">6</button> <button id="b17">7</button> <button id="b18">8</button>
-    <button id="b21">9</button> <button id="b22">10</button> <button id="b23">11</button> <button id="b24">12</button>
-    <button id="b25">13</button> <button id="b26">14</button> <button id="b27">15</button> <button id="b28">16</button>
-    <button id="b31">17</button> <button id="b32">18</button> <button id="b33">19</button> <button id="b34">20</button>
-    <button id="b35">21</button> <button id="b36">22</button> <button id="b37">23</button> <button id="b38">24</button>
-    <button id="b41">25</button> <button id="b42">26</button> <button id="b43">27</button> <button id="b44">28</button>
-    <button id="b45">29</button> <button id="b46">30</button> <button id="b47">31</button> <button id="b48">32</button>
-  </div>
 
   <script>
-    let bpmInMs  = 1000
-    let play = false
-    let currentStep = 0
     const beat1 = 'src/assets/kit/808_2.wav'
-    const beat2 = 'src/assets/kit/808_6.wav'
+    const beat2 = 'src/assets/kit/hat.wav'
     const beat3 = 'src/assets/kit/808_O.wav'
     const beat4 = 'src/assets/kit/soda-bottle-base-drum-46019.mp3'
     const beatMap = new Map
@@ -72,10 +43,6 @@
       }
     });
 
-    function updateStyle() {
-
-    }
-
     function step(){
       updateStyle()
       bars.forEach((beat,barArray) => {
@@ -92,25 +59,7 @@
       audio.play();
     }
 
-    function intervalTimer(callback, interval = 500) {
-      let counter = 1;
-      let timeoutId;
-      const startTime = Date.now();
 
-      function main() {
-        const nowTime = Date.now();
-        const nextTime = startTime + counter * interval;
-        timeoutId = setTimeout(main, interval - (nowTime - nextTime));
-        console.log('deviation', nowTime - nextTime);
-        console.log(currentStep)
-        counter += 1;
-        callback();
-      }
-      timeoutId = setTimeout(main, interval);
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
 
     const barButtons = document.querySelectorAll('.grid button');
     barButtons.forEach(button => {
