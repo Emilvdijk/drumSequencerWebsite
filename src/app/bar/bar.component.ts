@@ -14,7 +14,7 @@ import {Bar} from '../bar';
     <section>
       <div class="grid">
         <p>{{ bar.name }}</p>
-        <app-bar-button  *ngFor="let button of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; index as i;" [index]="i" [beatURL]="bar.kitURL"></app-bar-button>
+        <app-bar-button  *ngFor="let button of bar.barIsOn; index as i;" [stepIndex]="i" [barIndex]="barIndex" [isOn]="button"></app-bar-button>
       </div>
     </section>
   `,
@@ -22,16 +22,6 @@ import {Bar} from '../bar';
 })
 export class BarComponent {
   @Input() bar!:Bar;
-  @ViewChildren(BarButtonComponent) children!: QueryList<BarButtonComponent>;
-  beatMachineService: BeatMachineService = inject(BeatMachineService);
-
-  ngOnInit() {
-    this.beatMachineService.beatAction$.subscribe(value => {
-      this.doBeat(value);
-    });
+  @Input() barIndex!: number;
   }
 
-  doBeat(barToPlay:number){
-    this.children.find((bar)=> bar.index==barToPlay)?.playBeat()
-  }
-}

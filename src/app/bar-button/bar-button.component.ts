@@ -1,5 +1,7 @@
-import {Component,Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {BarsService} from '../bars.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bar-button',
@@ -7,23 +9,22 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   template: `
-    <!--    <div class="barButton">{{ index }}</div>-->
-    <!-- From Uiverse.io by PriyanshuGupta28 -->
-    <div class="buttonDiv">
-      <input type="checkbox" [(ngModel)]="inputValue">{{ index +1}}
+    <div>
+      <button (click)="toggle()" [class.active]="isOn">
+        {{ isOn ? 'On' : 'Off' }}
+      </button>
     </div>
   `,
   styleUrl: './bar-button.component.css'
 })
 
 export class BarButtonComponent {
-  @Input() beatURL!: string;
-  @Input() index!: number;
-  inputValue: boolean = false;
+  @Input() stepIndex!: number;
+  @Input() barIndex!: number;
+  @Input() isOn!:boolean;
+  barService:BarsService  = inject(BarsService);
 
-  playBeat() {
-    if(this.inputValue){
-      let beat =new Audio(this.beatURL)
-    beat.play();
-  }}
+  toggle() {
+    this.barService.toggleButton(this.barIndex,this.stepIndex);
+  }
 }

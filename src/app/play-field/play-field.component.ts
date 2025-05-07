@@ -1,8 +1,9 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, QueryList, ViewChildren} from '@angular/core';
 import {BarComponent} from '../bar/bar.component';
 import {Bar} from '../bar';
-import {BarService} from '../bar.service';
+import {BarsService} from '../bars.service';
 import {NgForOf} from '@angular/common';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-play-field',
@@ -12,14 +13,15 @@ import {NgForOf} from '@angular/common';
   ],
   template: `
     <section>
-      <app-bar *ngFor="let bar of barList" [bar]="bar"></app-bar>
+      <app-bar *ngFor="let bar of barList index as i;" [barIndex]="i" [bar]="bar"></app-bar>
     </section>
   `,
   styleUrl: './play-field.component.css'
 })
+
 export class PlayFieldComponent {
   barList:Bar[] = [];
-  barService:BarService  = inject(BarService);
+  barService:BarsService  = inject(BarsService);
 
   constructor() {
     this.barList = this.barService.getList();
