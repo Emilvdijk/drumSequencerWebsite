@@ -1,9 +1,8 @@
-import {Component, inject, QueryList, ViewChildren} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {BarComponent} from '../bar/bar.component';
 import {Bar} from '../bar';
 import {BarsService} from '../bars.service';
 import {NgForOf} from '@angular/common';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-play-field',
@@ -20,10 +19,12 @@ import {Subscription} from 'rxjs';
 })
 
 export class PlayFieldComponent {
-  barList:Bar[] = [];
-  barService:BarsService  = inject(BarsService);
+  barList: Bar[] = [];
+  barService: BarsService = inject(BarsService);
 
   constructor() {
-    this.barList = this.barService.getList();
+    this.barService.data$.subscribe((data) => {
+      this.barList = data;
+    })
   }
 }

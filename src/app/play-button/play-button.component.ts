@@ -10,7 +10,7 @@ import {PlayStopService} from '../play-stop.service';
   styleUrl: './play-button.component.css'
 })
 export class PlayButtonComponent {
-  playStopService :  PlayStopService= inject(PlayStopService);
+  playStopService: PlayStopService = inject(PlayStopService);
 
 
   constructor() {

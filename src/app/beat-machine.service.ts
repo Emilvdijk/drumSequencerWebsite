@@ -1,20 +1,34 @@
-import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import {inject, Injectable} from '@angular/core';
+import {Bar} from './bar';
+import {BarsService} from './bars.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeatMachineService {
-  currentStep:number = 0
-  beatAction$ = new Subject<number>();
+  currentStep: number = 0
+  barList: Bar[] = [];
+  barService: BarsService = inject(BarsService);
+
+  constructor() {
+    this.barService.data$.subscribe((data) => {
+      this.barList = data;
+    })
+  }
 
   doBeat() {
-    this.beatAction$.next(this.currentStep)
-    console.log( 'current step: '+ (this.currentStep+1));
-    (this.currentStep>14) ? this.currentStep = 0 : this.currentStep++
+    console.log('current step: ' + (this.currentStep + 1));
+    this.barList.forEach(item => {
+      if (item.barIsOn[this.currentStep]) {
+        let audio = new Audio(item.kitURL);
+        audio.play();
+      }
+    });
+    if (this.currentStep > 14) { this.currentStep = 0} else{ this.currentStep++}
+
   }
 
   resetCounter() {
-    this.currentStep =0
+    this.currentStep = 0
   }
 }

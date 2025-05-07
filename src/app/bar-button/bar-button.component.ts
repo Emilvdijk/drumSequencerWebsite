@@ -1,7 +1,6 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BarsService} from '../bars.service';
-import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bar-button',
@@ -21,10 +20,12 @@ import {Subject} from 'rxjs';
 export class BarButtonComponent {
   @Input() stepIndex!: number;
   @Input() barIndex!: number;
-  @Input() isOn!:boolean;
-  barService:BarsService  = inject(BarsService);
+  @Input() isOn!: boolean;
+
+  constructor(private readonly barService: BarsService) {
+  }
 
   toggle() {
-    this.barService.toggleButton(this.barIndex,this.stepIndex);
+    this.barService.toggleBarButton(this.barIndex, this.stepIndex);
   }
 }

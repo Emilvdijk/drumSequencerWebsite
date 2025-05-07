@@ -5,21 +5,22 @@ import {BeatMachineService} from './beat-machine.service';
   providedIn: 'root'
 })
 export class PlayStopService {
-  bpmInMs:number  = 150
+  bpmInMs: number = 150
   play: boolean | (() => void) = false
-  beatMachineService:BeatMachineService = inject(BeatMachineService);
+  beatMachineService: BeatMachineService = inject(BeatMachineService);
 
-  constructor() {}
+  constructor() {
+  }
 
   playStop() {
-      if (this.play) {
-        // @ts-ignore
-        this.play()
-        this.play = false
-        this.beatMachineService.resetCounter();
-      } else {
-        this.play = this.intervalTimer(this.bpmInMs)
-      }
+    if (this.play) {
+      // @ts-ignore
+      this.play()
+      this.play = false
+      this.beatMachineService.resetCounter();
+    } else {
+      this.play = this.intervalTimer(this.bpmInMs)
+    }
   }
 
   intervalTimer(interval = 500) {
@@ -42,7 +43,7 @@ export class PlayStopService {
     };
   }
 
-  step(){
+  step() {
     this.beatMachineService.doBeat();
   }
 }

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayButtonComponent } from './play-button.component';
+import {PlayButtonComponent} from './play-button.component';
 
 describe('PlayButtonComponent', () => {
   let component: PlayButtonComponent;

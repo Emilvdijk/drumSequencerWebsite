@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlayFieldComponent } from './play-field.component';
+import {PlayFieldComponent} from './play-field.component';
 
 describe('PlayFieldComponent', () => {
   let component: PlayFieldComponent;

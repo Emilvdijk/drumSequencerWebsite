@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LoadSaveButtonsComponent } from './load-save-buttons.component';
+import {LoadSaveButtonsComponent} from './load-save-buttons.component';
 
 describe('LoadSaveButtonsComponent', () => {
   let component: LoadSaveButtonsComponent;
