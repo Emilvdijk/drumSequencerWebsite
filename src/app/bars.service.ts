@@ -49,11 +49,11 @@ export class BarsService {
     a.href = url;
     a.download = "DrumSequencerSave";
     a.click();
+    a.remove()
     URL.revokeObjectURL(url);
   }
 
   loadState(json: AppState) {
-    // FIXME loading twice in a row doesnt work
     const nextState = produce(json, draft => {
     })
     this.barState.next(nextState);

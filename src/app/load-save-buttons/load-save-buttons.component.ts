@@ -34,5 +34,6 @@ export class LoadSaveButtonsComponent {
       }
     };
     reader.readAsText(file);
+    input.value = '';
   }
 }
