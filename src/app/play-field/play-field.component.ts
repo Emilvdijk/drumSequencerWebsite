@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
   ],
   template: `
     <section>
+<!--      FIXME ngModel sometime error-->
       <input type="text" [(ngModel)]="appState.name" (ngModelChange)="updateName($event)">
       <app-bpm-clock-button [bpm]="appState.bpm"
                             (bpmChange)="updateBpm($event)"></app-bpm-clock-button>
