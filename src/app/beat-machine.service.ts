@@ -1,24 +1,25 @@
 import {inject, Injectable} from '@angular/core';
 import {Bar} from './bar';
 import {BarsService} from './bars.service';
+import {AppState} from './app-state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeatMachineService {
   currentStep: number = 0
-  barList: Bar[] = [];
+  appState!: AppState;
   barService: BarsService = inject(BarsService);
 
   constructor() {
     this.barService.data$.subscribe((data) => {
-      this.barList = data;
+      this.appState = data;
     })
   }
 
   doBeat() {
     console.log('current step: ' + (this.currentStep + 1));
-    this.barList.forEach(item => {
+    this.appState.bars.forEach(item => {
       if (item.barIsOn[this.currentStep]) {
         let audio = new Audio(item.kitURL);
         audio.play();

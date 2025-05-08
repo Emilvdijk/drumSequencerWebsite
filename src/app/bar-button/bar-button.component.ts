@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BarsService} from '../bars.service';
 
@@ -21,9 +21,7 @@ export class BarButtonComponent {
   @Input() stepIndex!: number;
   @Input() barIndex!: number;
   @Input() isOn!: boolean;
-
-  constructor(private readonly barService: BarsService) {
-  }
+  barService: BarsService = inject(BarsService)
 
   toggle() {
     this.barService.toggleBarButton(this.barIndex, this.stepIndex);
