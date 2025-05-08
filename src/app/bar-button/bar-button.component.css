@@ -9,7 +9,8 @@ button.active {
   background-color: green;
   color: white;
 }
-div{
+
+div {
   margin: 2px;
   padding: 2px;
 }

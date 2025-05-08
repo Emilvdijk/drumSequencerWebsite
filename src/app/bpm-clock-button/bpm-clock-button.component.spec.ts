@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BpmClockButtonComponent } from './bpm-clock-button.component';
+import {BpmClockButtonComponent} from './bpm-clock-button.component';
 
 describe('BpmClockButtonComponent', () => {
   let component: BpmClockButtonComponent;

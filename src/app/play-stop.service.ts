@@ -3,7 +3,6 @@ import {BeatMachineService} from './beat-machine.service';
 import {BarsService} from './bars.service';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +10,12 @@ export class PlayStopService {
   bpmInMs!: number;
   play: boolean | (() => void) = false
   beatMachineService: BeatMachineService = inject(BeatMachineService);
-  barService:BarsService = inject(BarsService);
+  barService: BarsService = inject(BarsService);
 
   constructor() {
     this.barService.data$.subscribe(data => {
-      this.bpmInMs = 60000/data.bpm
-      if(this.play){
+      this.bpmInMs = 60000 / data.bpm
+      if (this.play) {
         this.continueTimerNoReset()
       }
     })

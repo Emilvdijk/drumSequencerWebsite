@@ -52,15 +52,15 @@ export class BarsService {
     URL.revokeObjectURL(url);
   }
 
-  loadState(json: any) {
+  loadState(json: AppState) {
     // FIXME loading twice in a row doesnt work
-    console.log(json)
-    console.log(this.barState.value)
-    this.barState.next(json);
+    const nextState = produce(json, draft => {
+    })
+    this.barState.next(nextState);
   }
 
   updateBpm(newBpm: number) {
-    // check if value is between a min max bpm range 20-400
+    // check if the value is between a min max bpm range 20-400
     const clampedBpm = Math.max(20, Math.min(400, newBpm));
     const nextState = produce(this.barState.value, draft => {
       draft.bpm = clampedBpm;
