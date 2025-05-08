@@ -8,17 +8,16 @@ import {FormsModule} from '@angular/forms';
   ],
   template: `
     <p>BPM:</p>
-    <input [(ngModel)]="bpm" type="number" (keyup.enter)="updateBpm()" (change)="updateBpm()">
+    <input [ngModel]="bpm" type="number" (ngModelChange)="bpm = $event" (keyup.enter)="updateBpm()"
+           (change)="updateBpm()">
   `,
   styleUrl: './bpm-clock-button.component.css'
 })
 export class BpmClockButtonComponent {
-  @Input() bpm! : number;
+  @Input() bpm!: number;
   @Output() bpmChange = new EventEmitter<number>();
 
   updateBpm() {
     this.bpmChange.emit(this.bpm); // bpm to ms delay per step
   }
-
-  protected readonly Math = Math;
 }

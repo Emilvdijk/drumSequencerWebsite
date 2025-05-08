@@ -1,5 +1,4 @@
 import {inject, Injectable} from '@angular/core';
-import {Bar} from './bar';
 import {BarsService} from './bars.service';
 import {AppState} from './app-state';
 
@@ -25,7 +24,11 @@ export class BeatMachineService {
         audio.play();
       }
     });
-    if (this.currentStep > 14) { this.currentStep = 0} else{ this.currentStep++}
+    if (this.currentStep > 14) {
+      this.currentStep = 0
+    } else {
+      this.currentStep++
+    }
 
   }
 

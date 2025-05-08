@@ -16,8 +16,7 @@ import {FormsModule} from '@angular/forms';
   ],
   template: `
     <section>
-<!--      FIXME ngModel sometime error-->
-      <input type="text" [(ngModel)]="appState.name" (ngModelChange)="updateName($event)">
+      <input type="text" [ngModel]="appState.name" (ngModelChange)="updateName($event)">
       <app-bpm-clock-button [bpm]="appState.bpm"
                             (bpmChange)="updateBpm($event)"></app-bpm-clock-button>
       <app-bar *ngFor="let bar of appState.bars index as i;" [barIndex]="i" [bar]="bar"></app-bar>
@@ -37,13 +36,14 @@ export class PlayFieldComponent {
   }
 
   updateBpm(newBpm: number) {
-    if(newBpm!=this.appState.bpm){
+    if (newBpm != this.appState.bpm) {
       this.barService.updateBpm(newBpm)
     }
   }
 
   updateName(newName: string) {
-    if (newName!=this.appState.name){
-    this.barService.updateName(newName);
-  }}
+    if (newName != this.appState.name) {
+      this.barService.updateName(newName);
+    }
+  }
 }
