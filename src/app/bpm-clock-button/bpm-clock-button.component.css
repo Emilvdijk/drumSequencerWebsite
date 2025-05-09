@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'LED Calculator';
+  font-style: normal;
+  font-weight: 400;
+  src: local('LED Calculator'), url('https://fonts.cdnfonts.com/s/71632/LEDCalculator.woff') format('woff');
+}
+
+*{
+  background: #044704;
+  font-family: 'LED Calculator', serif ;
+  font-size: 1.4rem;
+
+}
+
+.border{
+  background: #383838;
+  background: linear-gradient(320deg, rgba(56, 56, 56, 1) 0%, rgba(74, 74, 74, 1) 80%);
+  padding: 1px;
+  margin: 12px;
+  border-radius: 6px; /* optional */
+  display: inline-block;
+  box-shadow:5px 7px 6px -5px inset #5c5c5c , 0 0  6px 2px #383838;
+}
+
+.lcd-wrapper {
+  display: inline-block;
+  padding: 8px 8px 5px;
+  margin: 8px;
+  border-radius: 6px;
+  box-shadow: 5px 7px 6px -5px inset, 0 0 6px 2px #383838 ;
+}
+
+.lcd-row {
+  display: flex;
+  justify-content: center;
+  padding: 1px;
+  align-items: center;
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+input {
+  width: 3ch;
+  border: none;           /* no border */
+  outline: none;          /* removes blue outline on focus */
+  background: transparent; /* optional: if you want no background */
+}
+
