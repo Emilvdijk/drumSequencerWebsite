@@ -26,7 +26,7 @@ export class PlayStopService {
       // @ts-ignore
       this.play()
       this.play = false
-      this.beatMachineService.resetCounter();
+      this.beatMachineService.reset();
     } else {
       this.play = this.intervalTimer(this.bpmInMs)
     }
