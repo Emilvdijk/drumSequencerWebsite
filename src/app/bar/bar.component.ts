@@ -14,7 +14,7 @@ import {Bar} from '../bar';
       <div class="grid">
         <p>{{ bar.name }}</p>
         <app-bar-button *ngFor="let button of bar.barIsOn; index as i;" [stepIndex]="i"
-                        [barIndex]="barIndex" [isOn]="button"></app-bar-button>
+                        [barIndex]="barIndex" [isOn]="button" ></app-bar-button>
       </div>
     </section>
   `,
