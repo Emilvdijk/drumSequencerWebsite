@@ -3,3 +3,7 @@ section {
   padding: 8px;
   background: transparent;
 }
+
+div{
+  display: flex;
+}

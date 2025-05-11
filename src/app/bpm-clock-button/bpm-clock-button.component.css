@@ -17,7 +17,7 @@
   background: linear-gradient(320deg, rgba(56, 56, 56, 1) 0%, rgba(74, 74, 74, 1) 80%);
   padding: 1px;
   margin: 12px;
-  border-radius: 6px; /* optional */
+  border-radius: 6px;
   display: inline-block;
   box-shadow:5px 7px 6px -5px inset #5c5c5c , 0 0  6px 2px #383838;
 }
@@ -35,14 +35,12 @@
   justify-content: center;
   padding: 1px;
   align-items: center;
-  /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  /* Firefox */
   input[type=number] {
     -moz-appearance: textfield;
   }
@@ -50,8 +48,8 @@
 
 input {
   width: 3ch;
-  border: none;           /* no border */
-  outline: none;          /* removes blue outline on focus */
-  background: transparent; /* optional: if you want no background */
+  border: none;
+  outline: none;
+  background: transparent;
 }
 

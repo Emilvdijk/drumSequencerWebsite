@@ -5,18 +5,19 @@ import {PlayStopService} from '../play-stop.service';
   selector: 'app-play-button',
   imports: [],
   template: `
-    <button class="playButton" id="startPlayButton" (click)="playStop()">▶️</button>
-  `,
+    <div>
+      <button class="playButton" id="startPlayButton" [class.active]="isOn" (click)="playStop()">{{ isOn ? 'On' : 'Off' }}</button>
+    </div>`,
   styleUrl: './play-button.component.css'
 })
 export class PlayButtonComponent {
   playStopService: PlayStopService = inject(PlayStopService);
-
-
+  isOn: boolean = false;
   constructor() {
   }
 
   playStop() {
+    this.isOn = !this.isOn;
     this.playStopService.playStop()
   }
 

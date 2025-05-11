@@ -11,7 +11,6 @@ import {BeatMachineService} from '../beat-machine.service';
   template: `
     <div [class.active]="highlightToggle">
       <button (click)="toggle()" [class.active]="isOn">
-        {{ isOn ? 'On' : 'Off' }}
       </button>
     </div>
   `,
