@@ -1,8 +1,10 @@
 button {
-  min-width: 90px;
+  border: none;
+  min-width: 120px;
+  min-height: 70px;
   cursor: pointer;
-  font-size: 16px;
-  margin: 20px;
+  font-size: 30px;
+  margin: 20px 20px 20px 0;
   padding: 11px 30px;
   border-radius: 12px;
   box-shadow:

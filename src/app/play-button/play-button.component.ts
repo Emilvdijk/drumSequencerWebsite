@@ -6,7 +6,7 @@ import {PlayStopService} from '../play-stop.service';
   imports: [],
   template: `
     <div>
-      <button class="playButton" id="startPlayButton" [class.active]="isOn" (click)="playStop()">{{ isOn ? 'On' : 'Off' }}</button>
+      <button class="playButton" id="startPlayButton" [class.active]="isOn" (click)="playStop()">{{ isOn ? '⏹' : '▶' }}</button>
     </div>`,
   styleUrl: './play-button.component.css'
 })

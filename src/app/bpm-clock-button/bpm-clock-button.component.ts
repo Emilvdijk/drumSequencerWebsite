@@ -16,6 +16,7 @@ import {NgForOf} from '@angular/common';
                     (change)="updateBpm()" size="2" >
       </div>
     </div>
+    </div>
   `,
   styleUrl: './bpm-clock-button.component.css'
 })

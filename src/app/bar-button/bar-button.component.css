@@ -3,19 +3,20 @@
   width: 100%;
   height: 100%;
   border-radius: 12px;
-
+  border: none;
 }
 
 button {
+  border: outset #555555  2px;
   padding: 25px;
   background: radial-gradient(circle, #354c4c 0%, #1a2727 78%);
   cursor: pointer;
 }
 
 button.active {
+  border: inset #555555 2px;
   background: #37bbc4;
   background: radial-gradient(circle, rgb(44, 166, 177) 0%, rgb(40, 89, 89) 78%);
-
 }
 
 div.active{

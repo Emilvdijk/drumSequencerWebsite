@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Splurge';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Splurge'), url('https://fonts.cdnfonts.com/s/9508/SPLURGE_.woff') format('woff');
+}
+
+
 section {
   margin: 12px;
   padding: 8px;
@@ -6,4 +14,15 @@ section {
 
 div{
   display: flex;
+  align-items: center;
+}
+
+input{
+  font-family: 'Splurge', serif;
+  font-size: 3rem;
+  color: white;
+  width: 50ch;
+  border: none;
+  outline: none;
+  background: transparent;
 }

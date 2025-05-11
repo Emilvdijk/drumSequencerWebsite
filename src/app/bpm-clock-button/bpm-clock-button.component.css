@@ -9,13 +9,16 @@
   background: #044704;
   font-family: 'LED Calculator', serif ;
   font-size: 1.4rem;
+}
+
+section{
 
 }
 
 .border{
   background: #383838;
   background: linear-gradient(320deg, rgba(56, 56, 56, 1) 0%, rgba(74, 74, 74, 1) 80%);
-  padding: 1px;
+  padding: 5px;
   margin: 12px;
   border-radius: 6px;
   display: inline-block;
@@ -24,13 +27,14 @@
 
 .lcd-wrapper {
   display: inline-block;
-  padding: 8px 8px 5px;
+  padding: 2px 5px 2px;
   margin: 8px;
   border-radius: 6px;
   box-shadow: 5px 7px 6px -5px inset, 0 0 6px 2px #383838 ;
 }
 
 .lcd-row {
+  background: transparent;
   display: flex;
   justify-content: center;
   padding: 1px;

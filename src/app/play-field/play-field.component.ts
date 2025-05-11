@@ -20,9 +20,10 @@ import {LoadSaveButtonsComponent} from '../load-save-buttons/load-save-buttons.c
   ],
   template: `
     <section>
-
-      <input type="text" [ngModel]="appState.name" (ngModelChange)="updateName($event)">
+      <div>
       <app-load-save-buttons></app-load-save-buttons>
+      </div>
+      <input type="text" [ngModel]="appState.name" (ngModelChange)="updateName($event)">
       <div>
         <app-play-button></app-play-button>
         <app-bpm-clock-button [bpm]="appState.bpm"

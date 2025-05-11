@@ -9,7 +9,7 @@ import {BeatMachineService} from '../beat-machine.service';
     FormsModule
   ],
   template: `
-    <div [class.active]="highlightToggle">
+    <div [class.active]="highlightToggle" class="gradient-box">
       <button (click)="toggle()" [class.active]="isOn">
       </button>
     </div>
@@ -33,7 +33,7 @@ export class BarButtonComponent {
       } else if(step==0 && this.stepIndex==15){
         this.highlightToggle = false;
 
-      } else if(this.stepIndex==step){
+      } else if(this.stepIndex==step&&this.isOn){
         this.highlightToggle = true;
 
       }else if(this.stepIndex==(step-1)){
