@@ -4,4 +4,5 @@ export interface AppState {
   name: string;
   bpm: number;
   bars: Bar[];
+  volume: number;
 }
