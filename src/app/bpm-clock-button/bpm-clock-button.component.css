@@ -1,25 +1,16 @@
-@font-face {
-  font-family: 'LED Calculator';
-  font-style: normal;
-  font-weight: 400;
-  src: local('LED Calculator'), url('https://fonts.cdnfonts.com/s/71632/LEDCalculator.woff') format('woff');
-}
+
 
 *{
-  background: #044704;
+  background: rgb(39, 149, 159);
   font-family: 'LED Calculator', serif ;
   font-size: 1.4rem;
-}
-
-section{
-
 }
 
 .border{
   background: #383838;
   background: linear-gradient(320deg, rgba(56, 56, 56, 1) 0%, rgba(74, 74, 74, 1) 80%);
   padding: 5px;
-  margin: 12px;
+  margin: 30px 12px 12px;
   border-radius: 6px;
   display: inline-block;
   box-shadow:5px 7px 6px -5px inset #5c5c5c , 0 0  6px 2px #383838;
@@ -55,5 +46,10 @@ input {
   border: none;
   outline: none;
   background: transparent;
+}
+
+button{
+  margin: 2px;
+  border-radius: 100px;
 }
 

@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'LED Calculator';
+  font-style: normal;
+  font-weight: 400;
+  src: local('LED Calculator'), url('https://fonts.cdnfonts.com/s/71632/LEDCalculator.woff') format('woff');
+}
 * {
   background: transparent;
 }

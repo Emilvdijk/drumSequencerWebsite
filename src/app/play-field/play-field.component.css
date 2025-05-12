@@ -5,16 +5,13 @@
   src: local('Splurge'), url('https://fonts.cdnfonts.com/s/9508/SPLURGE_.woff') format('woff');
 }
 
-
 section {
   margin: 12px;
   padding: 8px;
-  background: transparent;
 }
 
 div{
   display: flex;
-  align-items: center;
 }
 
 input{
@@ -25,4 +22,103 @@ input{
   border: none;
   outline: none;
   background: transparent;
+}
+
+.Bar{
+  margin: 6px 6px 6px 0;
+  padding: 6px;
+  border-radius: 12px;
+  background: radial-gradient(circle,rgb(44, 166, 177) 0%, #1a2727 100%);
+  box-shadow: 0 1px 1px 0 rgba(129, 129, 129, 0.75), inset 0 2px 2px rgba(0, 0, 0, .25);
+  height: 100%;
+  width: 100%;
+  font-size: 3rem;
+}
+
+
+.volumeBar{
+  padding: 5px;
+  margin: 30px 12px 18px;
+  border-radius: 6px;
+  background: radial-gradient(circle,rgb(44, 166, 177) 0%, #1a2727 100%);
+  box-shadow: 0 1px 1px 0 rgba(129, 129, 129, 0.75), inset 0 2px 2px rgba(0, 0, 0, .25);
+  font-size: 3rem;
+  position: relative;
+}
+
+.topBar{
+  justify-content: space-between;
+
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 24.5rem;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+  z-index: 1;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: black;
+  border-radius: 2rem;
+  border: grey inset 0.125rem;
+  height: 0.5rem;
+}
+
+label{
+  font-size: 1.5rem;
+  font-family: 'LED Calculator', serif;
+  position: absolute;
+  top: 1px; /* Adjust as needed */
+  right: 155px;
+  z-index: 0;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -13px; /* Centers thumb on the track */
+  background-color: #1abecd;
+  border-radius: 3.5rem;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 0.125rem 0.125rem 0.25rem 0.125rem black , inset 0.125rem 0.125rem 0.25rem 0.125rem #50cdd1;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 3px solid #1e969a;
+  outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  display: none;
+  background-color: #86e0fe;
+  border-radius: 2rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #a06464;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 3.5rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+  outline: 3px solid #a06464;
+  outline-offset: 0.125rem;
 }
