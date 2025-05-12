@@ -16,21 +16,25 @@ import {NgForOf} from '@angular/common';
                     (change)="updateBpm()" size="2" >
       </div>
     </div>
+      <button (click)="increment()">↑</button>
+      <button (click)="dencrement()">↓</button>
     </div>
   `,
   styleUrl: './bpm-clock-button.component.css'
 })
 export class BpmClockButtonComponent {
-  lcdText: string[] = [
-    'hello, world!   ',
-    '5171            '  ];
-
-
-
   @Input() bpm!: number;
   @Output() bpmChange = new EventEmitter<number>();
 
   updateBpm() {
-    this.bpmChange.emit(this.bpm); // bpm to ms delay per step
+    this.bpmChange.emit(this.bpm);
+  }
+
+  increment() {
+    this.bpmChange.emit(this.bpm+5);
+  }
+
+  dencrement() {
+    this.bpmChange.emit(this.bpm-5);
   }
 }

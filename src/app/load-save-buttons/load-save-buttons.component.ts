@@ -5,8 +5,9 @@ import {BarsService} from '../bars.service';
   selector: 'app-load-save-buttons',
   imports: [],
   template: `
-    <button (click)="save()">Save to File</button>
-    <input type="file" (change)="onFileSelected($event)" accept=".json" />
+    <button (click)="save()">🖫</button>
+    <button (click)="fileUpload.click()">Load from 🗁</button>
+    <input #fileUpload type="file" (change)="onFileSelected($event)" accept=".json" hidden/>
   `,
   styleUrl: './load-save-buttons.component.css'
 })
@@ -18,6 +19,7 @@ export class LoadSaveButtonsComponent {
   }
 
   onFileSelected(event: Event) {
+    //FIXME add verification to file contents
     const input = event.target as HTMLInputElement;
 
     if (!input.files?.length) return;
