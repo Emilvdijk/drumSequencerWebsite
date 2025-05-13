@@ -34,7 +34,6 @@ import {FormsModule} from '@angular/forms';
 export class BarComponent {
   @Input() bar!: Bar;
   @Input() barIndex!: number;
-  @Input() selectedKit!: string;
   barService:BarsService = inject(BarsService);
 
   removeBar() {
