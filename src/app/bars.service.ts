@@ -35,8 +35,6 @@ export class BarsService {
   data$ = this.barState.asObservable()
   errorMessage = new Subject<string>();
   error$ = this.errorMessage.asObservable();
-  // FIXME add kits to selector of bar component
-
 
   constructor() {
     this.soundMap.set('Hat', 'assets/kit/hat.wav');
