@@ -134,7 +134,6 @@ export class BarsService {
     let list: string[] = []
     let newList: string[] = []
     this.barState.value.bars.forEach(bar => {list.push(bar.name)})
-    // @ts-ignore
     this.soundMap.forEach((value, key) =>{
       if(!list.includes(key)){
         newList.push(key)
@@ -142,5 +141,27 @@ export class BarsService {
       }
       })
     return newList
+  }
+
+  getFilteredKits(name: string) {
+    let list: string[] = []
+    this.barState.value.bars.forEach(bar => {list.push(bar.name)})
+    //exclude current selected kit
+    list=list.filter(value => value!=name)
+    //filter kits already on the field
+    let newKitList = [...this.soundMap.keys()]
+    return newKitList.filter(value => !list.includes(value));
+  }
+
+  updateBarKit(kitOption: string, barIndex: number) {
+    const nextState = produce(this.barState.value, draft => {
+      draft.bars[barIndex].name = kitOption
+      if(this.soundMap.get(kitOption)){
+        draft.bars[barIndex].kitURL = this.soundMap.get(kitOption) ?? '';
+      } else{
+        this.errorMessage.next('error finding kit')
+      }
+    });
+    this.barState.next(nextState);
   }
 }

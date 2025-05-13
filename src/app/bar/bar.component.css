@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: repeat(18, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 10px;
+  grid-column-gap: 8px;
   margin: 6px 6px 6px 0;
   padding: 6px;
   border-radius: 12px;
@@ -17,8 +17,12 @@ app-bar-button:nth-child(4n + 2){
 /*background: #37bbc4;*/
 }
 
-p {
-  margin-left: 5px;
+.buttonsPanel{
+  min-width: 120px;
+}
+
+select {
+  margin: 6px 80px 6px 0;
   padding-left: 5px;
   font-family: 'LED Calculator', serif;
   font-size: 1.5rem;

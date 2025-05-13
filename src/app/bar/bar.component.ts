@@ -3,22 +3,23 @@ import {BarButtonComponent} from '../bar-button/bar-button.component';
 import {NgForOf} from '@angular/common';
 import {Bar} from '../bar';
 import {BarsService} from '../bars.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-bar',
   imports: [
     BarButtonComponent,
     NgForOf,
+    FormsModule,
   ],
   template: `
       <div class="grid">
-        <div>
-        <p>{{ bar.name }}</p>
-<!--          <select (ngModel)="selectedOption">-->
-<!--            <option *ngFor="let kit of kits" [value]="kit">-->
-<!--              {{ kit }}-->
-<!--            </option>-->
-<!--          </select>-->
+        <div class="buttonsPanel">
+          <select [ngModel]="bar.name" (ngModelChange)="changeSelect($event)">
+            <option *ngFor="let kit of this.barService.getFilteredKits(bar.name)" [value]="kit">
+              {{ kit }}
+            </option>
+          </select>
         <button (click)="resetButtons()">⟳</button>
         </div>
         <app-bar-button *ngFor="let button of bar.barIsOn; index as i;" [stepIndex]="i"
@@ -33,7 +34,7 @@ import {BarsService} from '../bars.service';
 export class BarComponent {
   @Input() bar!: Bar;
   @Input() barIndex!: number;
-  @Input() kits!: string[];
+  @Input() selectedKit!: string;
   barService:BarsService = inject(BarsService);
 
   removeBar() {
@@ -42,6 +43,13 @@ export class BarComponent {
 
   resetButtons() {
     this.barService.resetButtons(this.barIndex)
+  }
+
+  changeSelect(kitOption: any) {
+    if(kitOption == this.bar.name){
+      return;
+    }
+    this.barService.updateBarKit(kitOption,this.barIndex)
   }
 }
 

@@ -36,7 +36,7 @@ import {debounce, debounceTime} from 'rxjs';
           <label for="volume">Volume:</label>
         </div>
       </div>
-      <app-bar *ngFor="let bar of appState.bars index as i;" [barIndex]="i" [bar]="bar" ></app-bar>
+      <app-bar *ngFor="let bar of appState.bars index as i;" [barIndex]="i" [bar]="bar" [selectedKit]="bar.name"></app-bar>
       <div>
         <button class="Bar" (click)="addBar()">+</button>
       </div>
